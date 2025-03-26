@@ -1,0 +1,41 @@
+<form [formGroup]="useform" (ngSubmit)="onSubmit()">
+    <div>
+        <label>სახელი</label>
+        <input type="text" formControlName="name">
+        <div *ngIf="useform.get('name')?.invalid && useform.get('name')?.touched" >
+            <small *ngIf="useform.get('name')?.errors?.['required']">სახელის შეყვანა აუცილებელია</small>
+        </div>
+    </div>
+    <div>
+        <label>გვარი</label>
+        <input type="text" formControlName="surname">
+        <div *ngIf="useform.get('surname')?.invalid && useform.get('surname')?.touched" >
+            <small *ngIf="useform.get('surname')?.errors?.['required']">გვარის შეყვანა აუცილებელია</small>
+        </div>
+    </div>
+    <div>
+        <label>მეილი</label>
+        <input type="text" formControlName="email">
+        <div *ngIf="useform.get('email')?.invalid && useform.get('email')?.touched" >
+            <small *ngIf="useform.get('email')?.errors?.['required']">მეილის შეყვანა აუცილებელია</small>
+            <small *ngIf="useform.get('email')?.errors?.['email']">მეილი არასწორია</small>
+        </div>
+    </div>
+    <div>
+        <label>პაროლი</label>
+        <input type="text" formControlName="password">
+        <div *ngIf="useform.get('password')?.invalid && useform.get('password')?.touched" >
+            <small *ngIf="useform.get('password')?.errors?.['required']">პაროლის შეყვანა აუცილებელია</small>
+            <small *ngIf="useform.get('password')?.errors?.['minlength']">მინიმალური 8 სიმბოლო</small>
+        </div>
+    </div>
+    <div>
+        <label>ნომერი</label>
+        <input type="text" formControlName="phoneNumber">
+        <div *ngIf="useform.get('phoneNumber')?.invalid && useform.get('phoneNumber')?.touched" >
+            <small *ngIf="useform.get('phoneNumber')?.errors?.['required']">ნომრის შეყვანა აუცილებელია</small>
+            <small *ngIf="useform.get('phoneNumber')?.errors?.['minlength']">მინიმალური 9 სიმბოლო</small>
+        </div>
+    </div>
+    <button type="submit"  [disabled]="useform.invalid">ღილაკი</button>
+</form>
